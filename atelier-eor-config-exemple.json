@@ -1,0 +1,29 @@
+{
+  "utilisateurs": "les agents et managers de proximité de SNCF Réseau",
+  "action": "retrouver en moins de 30 secondes une bonne pratique validée et la partager facilement avec leur équipe",
+  "benefices": "réduire le temps perdu à chercher l'information, capitaliser sur les retours d'expérience terrain et améliorer les marqueurs EOR de façon mesurable",
+  "donnees-existantes": "Marqueurs EOR suivis : taux de conformité sécurité, taux de réalisation des visites terrain, indice de satisfaction agent. Environ 450 fiches de bonnes pratiques existent aujourd'hui, dispersées sur 12 SharePoint régionaux différents, avec des formats hétérogènes (PPT, Word, Excel). Volume estimé : 3 à 5 Go de documents, mis à jour de façon très irrégulière (certains dossiers n'ont pas bougé depuis 2022).",
+  "communaute-info": "Le contenu est produit principalement par les référents EOR régionaux (une quinzaine de personnes) et les managers de proximité lors des retours d'expérience trimestriels. Il est consulté de façon ponctuelle par les mêmes profils lors de la préparation des comités EOR, mais très peu par les agents de terrain. La validation se fait de manière informelle, par le référent régional, sans processus homogène au niveau national.",
+  "usage-premier": "Le lendemain matin, un manager de proximité chercherait une bonne pratique déjà appliquée ailleurs sur un sujet précis (ex. réduction des incidents de signalisation) avant sa réunion d'équipe, sans avoir à contacter plusieurs personnes ou fouiller dans des dossiers partagés.",
+  "ia-reflexion": "Sans l'IA, il resterait un espace de dépôt et un moteur de recherche par mots-clés classique, ce qui couvrirait déjà 70% du besoin. Ce qui nécessite vraiment de l'IA, c'est la capacité à retrouver des initiatives similaires même si elles sont formulées différemment (recherche sémantique) et à résumer rapidement un ensemble de documents longs pour un manager pressé.",
+  "roadmap-detail": "Mois 1-2 (POC) : collecte des 450 fiches existantes, dédoublonnage, moteur de recherche par mots-clés, test avec 2 régions pilotes. Mois 3-5 (MVP) : ouverture à toutes les régions, workflow de contribution avec validation par les référents EOR, premiers indicateurs d'usage (nombre de consultations, contributions). Mois 6-9 (Version IA) : recherche sémantique, génération de synthèse pour les comités EOR, recommandations de bonnes pratiques similaires basées sur les marqueurs EOR de chaque région.",
+  "projection-2027": "Les managers de proximité consultent la plateforme chaque semaine avant leurs réunions d'équipe. Les référents EOR passent 3 fois moins de temps à préparer les comités car les synthèses sont générées automatiquement. Le Groupe cite le laboratoire EOR de SNCF Réseau comme référence lors des campagnes internes de partage de bonnes pratiques. Les nouveaux agents disent que c'est le premier réflexe qu'on leur donne en arrivant dans l'équipe.",
+  "synthese-projet": "Une plateforme collaborative de capitalisation des bonnes pratiques EOR, enrichie par une couche de recherche sémantique et de synthèse automatique, conçue pour faire gagner du temps aux managers de proximité et fiabiliser le partage d'expérience entre régions.",
+  "sources": ["SharePoint", "PowerPoint", "Teams"],
+  "casUsage": [
+    { "label": "Recherche de bonnes pratiques", "priorite": "high" },
+    { "label": "Publication d'expérience", "priorite": "high" },
+    { "label": "Synthèse pour comité EOR", "priorite": "medium" },
+    { "label": "Dashboard de suivi des marqueurs", "priorite": "medium" },
+    { "label": "Recommandations personnalisées par région", "priorite": "low" },
+    { "label": "Assistant conversationnel EOR", "priorite": "low" }
+  ],
+  "iaOuNon": [
+    { "label": "Déposer une bonne pratique", "ia": false },
+    { "label": "Recherche documentaire par mots-clés", "ia": false },
+    { "label": "Recherche sémantique par similarité", "ia": true },
+    { "label": "Synthèse automatique multi-documents", "ia": true },
+    { "label": "Recommandation de pratiques similaires", "ia": true },
+    { "label": "Export du dashboard de suivi", "ia": false }
+  ]
+}
