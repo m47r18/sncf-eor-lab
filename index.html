@@ -4,368 +4,300 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Atelier EOR - Cadrage Produit & IA</title>
-
-<style>
-:root{
-    --sncf:#E2001A;
-    --dark:#1F2937;
-    --light:#F8FAFC;
-    --border:#D1D5DB;
-    --success:#10B981;
-}
-
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-    font-family:'Segoe UI',sans-serif;
-}
-
-body{
-    background:#f5f6f8;
-    color:var(--dark);
-}
-
-header{
-    background:linear-gradient(135deg,#E2001A,#A30014);
-    color:white;
-    padding:40px;
-}
-
-header h1{
-    font-size:2rem;
-}
-
-header p{
-    margin-top:10px;
-    opacity:0.9;
-}
-
-.container{
-    max-width:1400px;
-    margin:auto;
-    padding:30px;
-}
-
-.card{
-    background:white;
-    border-radius:12px;
-    padding:25px;
-    margin-bottom:20px;
-    box-shadow:0 2px 8px rgba(0,0,0,0.08);
-}
-
-.card h2{
-    color:var(--sncf);
-    margin-bottom:15px;
-}
-
-textarea,input{
-    width:100%;
-    border:1px solid var(--border);
-    border-radius:8px;
-    padding:12px;
-    margin-top:8px;
-}
-
-textarea{
-    min-height:120px;
-    resize:vertical;
-}
-
-.grid-2{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
-}
-
-.grid-3{
-    display:grid;
-    grid-template-columns:1fr 1fr 1fr;
-    gap:20px;
-}
-
-.tag{
-    display:inline-block;
-    padding:5px 10px;
-    border-radius:15px;
-    font-size:0.8rem;
-    background:#EFEFEF;
-}
-
-.priority-high{
-    background:#DCFCE7;
-}
-
-.priority-medium{
-    background:#FEF3C7;
-}
-
-.priority-low{
-    background:#FEE2E2;
-}
-
-table{
-    width:100%;
-    border-collapse:collapse;
-}
-
-table th{
-    background:#f3f4f6;
-}
-
-table td,table th{
-    padding:12px;
-    border:1px solid var(--border);
-}
-
-button{
-    background:var(--sncf);
-    color:white;
-    border:none;
-    padding:12px 20px;
-    border-radius:8px;
-    cursor:pointer;
-}
-
-button:hover{
-    opacity:0.9;
-}
-
-.result{
-    background:#F9FAFB;
-    border-left:5px solid var(--success);
-    padding:20px;
-    margin-top:15px;
-}
-
-footer{
-    text-align:center;
-    padding:30px;
-    color:#666;
-}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header>
-    <h1>🚀 Atelier EOR - Cadrage Produit & IA</h1>
-    <p>Laboratoire Excellence Opérationnelle & Relationnelle</p>
+    <h1>🚀 Atelier de cadrage — Plateforme EOR</h1>
+    <p>Partage des bonnes pratiques et valorisation des marqueurs d'Excellence</p>
+    <span class="badge-duree">⏱ Durée totale : 2h</span>
 </header>
 
 <div class="container">
 
+    <!-- 1. Introduction et objectifs -->
     <div class="card">
-        <h2>1. Vision du projet</h2>
+        <div class="card-header">
+            <h2>1. Introduction et objectifs</h2>
+            <span class="timing">10 min</span>
+        </div>
+        <p class="objectif">Objectif : aligner tout le monde sur ce que Nathalie cherche à obtenir.</p>
 
-        <label>Quel problème souhaite-t-on résoudre ?</label>
-        <textarea id="probleme"></textarea>
+        <ul class="questions">
+            <li>Quelle est la problématique métier à résoudre ?</li>
+            <li>À quoi reconnaîtra-t-on le succès dans un an ?</li>
+            <li>Quel problème n'est aujourd'hui pas suffisamment traité ?</li>
+        </ul>
 
-        <label>Qui sont les utilisateurs cibles ?</label>
-        <textarea id="utilisateurs"></textarea>
+        <span class="livrable-label">📦 Livrable : une phrase de vision</span>
 
-        <label>Quels bénéfices attendus ?</label>
-        <textarea id="benefices"></textarea>
+        <div class="grid-3">
+            <div>
+                <label>Nous voulons permettre à ...</label>
+                <input id="utilisateurs" placeholder="quels utilisateurs ?">
+            </div>
+            <div>
+                <label>de ...</label>
+                <input id="action" placeholder="faire quoi ?">
+            </div>
+            <div>
+                <label>afin de ...</label>
+                <input id="benefices" placeholder="quel bénéfice ?">
+            </div>
+        </div>
 
         <button onclick="genererVision()">Générer la vision</button>
 
         <div id="visionResult" class="result" style="display:none;"></div>
     </div>
 
+    <!-- 2. Comprendre l'existant -->
     <div class="card">
-        <h2>2. Cartographie des données existantes</h2>
+        <div class="card-header">
+            <h2>2. Comprendre l'existant</h2>
+            <span class="timing">20 min</span>
+        </div>
+        <p class="objectif">Ce que l'on cherche à savoir : quelles informations existent déjà ?</p>
 
-        <div class="grid-3">
+        <label><strong>Sources</strong> — où sont stockées les bonnes pratiques aujourd'hui ?</label>
+        <div class="checkbox-list">
+            <label><input type="checkbox"> Fichiers Excel</label>
+            <label><input type="checkbox"> SharePoint</label>
+            <label><input type="checkbox"> PowerPoint</label>
+            <label><input type="checkbox"> Emails</label>
+            <label><input type="checkbox"> Teams</label>
+        </div>
 
+        <div class="grid-2" style="margin-top:20px;">
             <div>
-                <h3>Documents</h3>
-                <textarea placeholder="SharePoint, PPT, Word..."></textarea>
+                <label><strong>Données</strong> — marqueurs EOR, indicateurs suivis, volume de données existant</label>
+                <textarea placeholder="Quels sont les marqueurs EOR ? Quels indicateurs sont suivis ? Quel volume de données existe déjà ?"></textarea>
             </div>
-
             <div>
-                <h3>Données</h3>
-                <textarea placeholder="Indicateurs EOR"></textarea>
+                <label><strong>Communauté</strong> — qui produit, consulte, valide le contenu ?</label>
+                <textarea placeholder="Qui produit le contenu ? Qui le consulte ? Qui le valide ?"></textarea>
             </div>
+        </div>
 
-            <div>
-                <h3>Communautés</h3>
-                <textarea placeholder="Contributeurs, experts..."></textarea>
-            </div>
+        <span class="livrable-label" style="margin-top:20px;display:inline-block;">📦 Livrable : cartographie</span>
 
+        <div class="flow">
+            <div class="flow-step card" style="box-shadow:none;border:1px solid var(--border);text-align:center;">Sources de données</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step card" style="box-shadow:none;border:1px solid var(--border);text-align:center;">Communauté</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step card" style="box-shadow:none;border:1px solid var(--border);text-align:center;">Usages actuels</div>
         </div>
     </div>
 
+    <!-- 3. Définir le produit cible -->
     <div class="card">
+        <div class="card-header">
+            <h2>3. Définir le produit cible</h2>
+            <span class="timing">35 min</span>
+        </div>
 
-        <h2>3. Cas d'usage</h2>
+        <p class="objectif">Exercice : si le produit était disponible demain matin, que ferait l'utilisateur en premier ?</p>
+        <textarea placeholder="Faire émerger les cas d'usage..."></textarea>
+
+        <div class="grid-4" style="margin-top:20px;">
+            <div>
+                <h3>🔎 Consulter</h3>
+                <ul class="questions">
+                    <li>Trouver une bonne pratique</li>
+                    <li>Chercher un retour d'expérience</li>
+                    <li>Voir ce qui fonctionne ailleurs</li>
+                </ul>
+            </div>
+            <div>
+                <h3>✍️ Contribuer</h3>
+                <ul class="questions">
+                    <li>Publier un retour d'expérience</li>
+                    <li>Déposer un document</li>
+                    <li>Décrire une initiative réussie</li>
+                </ul>
+            </div>
+            <div>
+                <h3>📚 Capitaliser</h3>
+                <ul class="questions">
+                    <li>Identifier les pratiques les plus citées</li>
+                    <li>Faire émerger des tendances</li>
+                </ul>
+            </div>
+            <div>
+                <h3>📊 Piloter</h3>
+                <ul class="questions">
+                    <li>Mesurer la diffusion</li>
+                    <li>Suivre les marqueurs EOR</li>
+                </ul>
+            </div>
+        </div>
+
+        <span class="livrable-label" style="margin-top:20px;display:inline-block;">📦 Livrable : priorisation des cas d'usage</span>
 
         <table>
-
             <thead>
                 <tr>
                     <th>Cas d'usage</th>
                     <th>Priorité</th>
                 </tr>
             </thead>
-
             <tbody>
-
                 <tr>
                     <td>Recherche de bonnes pratiques</td>
                     <td><span class="tag priority-high">Haute</span></td>
                 </tr>
-
                 <tr>
-                    <td>Partage de retours d'expérience</td>
+                    <td>Publication d'expérience</td>
                     <td><span class="tag priority-high">Haute</span></td>
                 </tr>
-
                 <tr>
-                    <td>Capitalisation des savoirs</td>
-                    <td><span class="tag priority-high">Haute</span></td>
-                </tr>
-
-                <tr>
-                    <td>Dashboard EOR</td>
+                    <td>IA conversationnelle</td>
                     <td><span class="tag priority-medium">Moyenne</span></td>
                 </tr>
-
                 <tr>
-                    <td>Assistant IA conversationnel</td>
+                    <td>Dashboard</td>
                     <td><span class="tag priority-medium">Moyenne</span></td>
                 </tr>
-
+                <tr>
+                    <td>Recommandations IA</td>
+                    <td><span class="tag priority-low">Faible/Moyenne</span></td>
+                </tr>
             </tbody>
         </table>
-
     </div>
 
+    <!-- 4. Explorer la valeur apportée par l'IA -->
     <div class="card">
-
-        <h2>4. IA ou pas IA ?</h2>
-
-        <table>
-
-            <thead>
-                <tr>
-                    <th>Fonctionnalité</th>
-                    <th>Type</th>
-                </tr>
-            </thead>
-
-            <tbody>
-
-                <tr>
-                    <td>Dépôt d'une bonne pratique</td>
-                    <td>💻 Fonction classique</td>
-                </tr>
-
-                <tr>
-                    <td>Moteur de recherche documentaire</td>
-                    <td>💻 Fonction classique</td>
-                </tr>
-
-                <tr>
-                    <td>Recherche sémantique</td>
-                    <td>🤖 IA</td>
-                </tr>
-
-                <tr>
-                    <td>Synthèse automatique</td>
-                    <td>🤖 IA</td>
-                </tr>
-
-                <tr>
-                    <td>Suggestions d'initiatives similaires</td>
-                    <td>🤖 IA</td>
-                </tr>
-
-            </tbody>
-
-        </table>
-
-    </div>
-
-    <div class="card">
-
-        <h2>5. Roadmap Produit</h2>
-
-        <div class="grid-3">
-
-            <div>
-                <h3>Phase 1 - POC</h3>
-                <ul>
-                    <li>Collecte des contenus</li>
-                    <li>Recherche simple</li>
-                    <li>Tests utilisateurs</li>
-                </ul>
-            </div>
-
-            <div>
-                <h3>Phase 2 - MVP</h3>
-                <ul>
-                    <li>Communauté pilote</li>
-                    <li>Workflow contribution</li>
-                    <li>Indicateurs d'usage</li>
-                </ul>
-            </div>
-
-            <div>
-                <h3>Phase 3 - IA</h3>
-                <ul>
-                    <li>Assistant conversationnel</li>
-                    <li>Recherche sémantique</li>
-                    <li>Recommandations</li>
-                </ul>
-            </div>
-
+        <div class="card-header">
+            <h2>4. Explorer la valeur apportée par l'IA</h2>
+            <span class="timing">25 min</span>
         </div>
 
+        <p class="objectif">Question centrale : si on enlève l'IA, que reste-t-il ?</p>
+        <p style="margin-bottom:15px;color:#555;">Cela permet de distinguer : plateforme collaborative / moteur de recherche / fonctionnalités IA.</p>
+
+        <h3 style="margin-bottom:10px;">Cas IA à challenger</h3>
+
+        <div class="ia-quote"><strong>Assistant conversationnel</strong> — "Comment améliorer le marqueur X ?"</div>
+        <div class="ia-quote"><strong>Recherche sémantique</strong> — "Montre-moi des initiatives similaires."</div>
+        <div class="ia-quote"><strong>Génération de synthèses</strong> — "Résume-moi les 20 projets liés à ce sujet."</div>
+        <div class="ia-quote"><strong>Recommandation</strong> — "Quelles actions ont produit les meilleurs résultats ?"</div>
+
+        <span class="livrable-label" style="margin-top:10px;display:inline-block;">📦 Livrable : IA ou non ?</span>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Fonction</th>
+                    <th>IA ou non ?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Déposer une bonne pratique</td>
+                    <td>💻 Non</td>
+                </tr>
+                <tr>
+                    <td>Recherche documentaire</td>
+                    <td>💻 Non</td>
+                </tr>
+                <tr>
+                    <td>Recherche intelligente</td>
+                    <td>🤖 Oui</td>
+                </tr>
+                <tr>
+                    <td>Synthèse automatique</td>
+                    <td>🤖 Oui</td>
+                </tr>
+                <tr>
+                    <td>Recommandation</td>
+                    <td>🤖 Oui</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
+    <!-- 5. Construire la feuille de route -->
     <div class="card">
+        <div class="card-header">
+            <h2>5. Construire la feuille de route</h2>
+            <span class="timing">20 min</span>
+        </div>
 
-        <h2>🎯 Question de projection</h2>
+        <div class="grid-3">
+            <div>
+                <h3>Étape 1 — POC</h3>
+                <ul class="questions">
+                    <li>Collecte de contenus</li>
+                    <li>Moteur de recherche</li>
+                    <li>Premiers usages</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Étape 2 — MVP</h3>
+                <ul class="questions">
+                    <li>Communauté pilote</li>
+                    <li>Enrichissement</li>
+                    <li>Analytics</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Étape 3 — Version IA</h3>
+                <ul class="questions">
+                    <li>Assistant conversationnel</li>
+                    <li>Recommandations</li>
+                    <li>Analyse automatique</li>
+                </ul>
+            </div>
+        </div>
 
-        <p style="margin-bottom:15px;">
-            Imaginez que nous soyons en septembre 2027.
-            Le laboratoire EOR est devenu une référence au Groupe.
-            Que disent les utilisateurs ?
-        </p>
+        <span class="livrable-label" style="margin-top:20px;display:inline-block;">📦 Livrable : roadmap 6 à 12 mois</span>
+        <textarea placeholder="Détaillez la roadmap sur 6 à 12 mois..."></textarea>
+    </div>
 
-        <textarea placeholder="Les agents trouvent facilement les bonnes pratiques..."></textarea>
+    <!-- 6. Conclusion -->
+    <div class="card">
+        <div class="card-header">
+            <h2>6. Conclusion</h2>
+            <span class="timing">10 min</span>
+        </div>
 
+        <p class="objectif">Ce qu'il faut avoir obtenu :</p>
+        <ul class="checklist">
+            <li>✅ La vision du produit</li>
+            <li>✅ Les utilisateurs cibles</li>
+            <li>✅ Les données disponibles</li>
+            <li>✅ Les principaux cas d'usage</li>
+            <li>✅ Les fonctionnalités IA pertinentes</li>
+            <li>✅ Les prochaines étapes</li>
+        </ul>
+
+        <div class="projection">
+            <h3>🎯 Un exercice à faire absolument</h3>
+            <p style="margin:10px 0;">
+                "Imagine que nous soyons en septembre 2027 et que le laboratoire EOR soit devenu une référence au Groupe.
+                Que se passe-t-il concrètement ? Que disent les utilisateurs ?"
+            </p>
+            <p style="font-size:0.85rem;color:#666;margin-bottom:10px;">
+                Cette question permet souvent de faire émerger la vraie vision du produit plus vite que la discussion sur les fonctionnalités.
+            </p>
+            <textarea placeholder="Les agents trouvent facilement les bonnes pratiques..."></textarea>
+        </div>
+
+        <span class="livrable-label" style="margin-top:20px;display:inline-block;">📦 Formulation synthétique du projet</span>
+        <textarea placeholder="À ce stade, le produit peut être résumé ainsi..."></textarea>
     </div>
 
 </div>
 
 <footer>
-Atelier FAN • Cadrage produit • Excellence Opérationnelle & Relationnelle
+Atelier de cadrage • Plateforme EOR • Excellence Opérationnelle & Relationnelle
 </footer>
 
-<script>
-
-function genererVision(){
-
-    let probleme=document.getElementById("probleme").value;
-    let utilisateurs=document.getElementById("utilisateurs").value;
-    let benefices=document.getElementById("benefices").value;
-
-    let texte=
-    "<strong>Vision proposée :</strong><br><br>" +
-    "Permettre à <b>" + utilisateurs +
-    "</b> de mieux partager et retrouver les bonnes pratiques afin de résoudre <b>" +
-    probleme +
-    "</b> et générer les bénéfices suivants : <b>" +
-    benefices +
-    "</b>.";
-
-    document.getElementById("visionResult").style.display="block";
-    document.getElementById("visionResult").innerHTML=texte;
-}
-
-</script>
+<script src="script.js" defer></script>
 
 </body>
 </html>

@@ -1,0 +1,277 @@
+:root{
+    --sncf:#E2001A;
+    --dark:#1F2937;
+    --light:#F8FAFC;
+    --border:#D1D5DB;
+    --success:#10B981;
+    --warning:#F59E0B;
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:#f5f6f8;
+    color:var(--dark);
+}
+
+header{
+    background:linear-gradient(135deg,#E2001A,#A30014);
+    color:white;
+    padding:40px;
+}
+
+header h1{
+    font-size:2rem;
+}
+
+header p{
+    margin-top:10px;
+    opacity:0.9;
+}
+
+.badge-duree{
+    display:inline-block;
+    margin-top:15px;
+    background:rgba(255,255,255,0.2);
+    padding:6px 14px;
+    border-radius:20px;
+    font-size:0.85rem;
+}
+
+.container{
+    max-width:1400px;
+    margin:auto;
+    padding:30px;
+}
+
+.card{
+    background:white;
+    border-radius:12px;
+    padding:25px;
+    margin-bottom:20px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.08);
+}
+
+.card-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:15px;
+}
+
+.card h2{
+    color:var(--sncf);
+}
+
+.timing{
+    font-size:0.85rem;
+    color:#666;
+    background:#f3f4f6;
+    padding:4px 10px;
+    border-radius:12px;
+    white-space:nowrap;
+}
+
+.objectif{
+    font-style:italic;
+    color:#555;
+    margin-bottom:12px;
+}
+
+.questions{
+    margin:10px 0 15px 20px;
+}
+
+.questions li{
+    margin-bottom:4px;
+}
+
+.livrable-label{
+    display:inline-block;
+    background:#EFF6FF;
+    color:#1D4ED8;
+    font-weight:600;
+    padding:4px 10px;
+    border-radius:8px;
+    font-size:0.8rem;
+    margin-bottom:8px;
+}
+
+textarea,input{
+    width:100%;
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:12px;
+    margin-top:8px;
+    font-size:0.95rem;
+}
+
+textarea{
+    min-height:80px;
+    resize:vertical;
+}
+
+.grid-2{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.grid-3{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:20px;
+}
+
+.grid-4{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.tag{
+    display:inline-block;
+    padding:5px 10px;
+    border-radius:15px;
+    font-size:0.8rem;
+    background:#EFEFEF;
+}
+
+.priority-high{
+    background:#DCFCE7;
+}
+
+.priority-medium{
+    background:#FEF3C7;
+}
+
+.priority-low{
+    background:#FEE2E2;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+table th{
+    background:#f3f4f6;
+}
+
+table td,table th{
+    padding:12px;
+    border:1px solid var(--border);
+}
+
+button{
+    background:var(--sncf);
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:8px;
+    cursor:pointer;
+    margin-top:10px;
+}
+
+button:hover{
+    opacity:0.9;
+}
+
+.result{
+    background:#F9FAFB;
+    border-left:5px solid var(--success);
+    padding:20px;
+    margin-top:15px;
+}
+
+/* Cartographie: sources -> communaute -> usages */
+.flow{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.flow-step{
+    flex:1;
+}
+
+.flow-arrow{
+    font-size:1.5rem;
+    color:var(--sncf);
+}
+
+.checkbox-list{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:8px;
+}
+
+.checkbox-list label{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    background:#f3f4f6;
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:0.9rem;
+    width:auto;
+}
+
+.checkbox-list input[type=checkbox]{
+    width:auto;
+    margin:0;
+}
+
+.ia-quote{
+    background:#F5F3FF;
+    border-left:4px solid #7C3AED;
+    padding:12px 15px;
+    border-radius:6px;
+    margin-bottom:10px;
+}
+
+.ia-quote strong{
+    color:#5B21B6;
+}
+
+.checklist{
+    list-style:none;
+}
+
+.checklist li{
+    padding:6px 0;
+}
+
+.projection{
+    background:linear-gradient(135deg,#FEF2F2,#FFF7ED);
+    border:1px dashed var(--sncf);
+    border-radius:10px;
+    padding:20px;
+    margin-top:15px;
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    color:#666;
+}
+
+@media (max-width:900px){
+    .grid-2,.grid-3,.grid-4{
+        grid-template-columns:1fr;
+    }
+    .flow{
+        flex-direction:column;
+    }
+    .flow-arrow{
+        transform:rotate(90deg);
+    }
+}
