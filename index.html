@@ -194,31 +194,12 @@
                 <tr>
                     <th>Cas d'usage</th>
                     <th>Priorité</th>
+                    <th></th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>Recherche de bonnes pratiques</td>
-                    <td><span class="tag priority-high">Haute</span></td>
-                </tr>
-                <tr>
-                    <td>Publication d'expérience</td>
-                    <td><span class="tag priority-high">Haute</span></td>
-                </tr>
-                <tr>
-                    <td>IA conversationnelle</td>
-                    <td><span class="tag priority-medium">Moyenne</span></td>
-                </tr>
-                <tr>
-                    <td>Dashboard</td>
-                    <td><span class="tag priority-medium">Moyenne</span></td>
-                </tr>
-                <tr>
-                    <td>Recommandations IA</td>
-                    <td><span class="tag priority-low">Faible/Moyenne</span></td>
-                </tr>
-            </tbody>
+            <tbody id="casUsageBody"></tbody>
         </table>
+        <button class="add-row-btn" onclick="ajouterCasUsage()">➕ Ajouter une ligne</button>
     </div>
 
     <!-- 4. Explorer la valeur apportée par l'IA -->
@@ -259,31 +240,12 @@
                 <tr>
                     <th>Fonction</th>
                     <th>IA ou non ?</th>
+                    <th></th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>Déposer une bonne pratique</td>
-                    <td>💻 Non</td>
-                </tr>
-                <tr>
-                    <td>Recherche documentaire</td>
-                    <td>💻 Non</td>
-                </tr>
-                <tr>
-                    <td>Recherche intelligente</td>
-                    <td>🤖 Oui</td>
-                </tr>
-                <tr>
-                    <td>Synthèse automatique</td>
-                    <td>🤖 Oui</td>
-                </tr>
-                <tr>
-                    <td>Recommandation</td>
-                    <td>🤖 Oui</td>
-                </tr>
-            </tbody>
+            <tbody id="iaOuNonBody"></tbody>
         </table>
+        <button class="add-row-btn" onclick="ajouterIaOuNon()">➕ Ajouter une ligne</button>
     </div>
 
     <!-- 5. Construire la feuille de route -->

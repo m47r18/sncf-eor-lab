@@ -9,6 +9,96 @@ const TEXT_FIELD_IDS = [
 
 const CHECKBOX_IDS = ["src-excel", "src-sharepoint", "src-ppt", "src-emails", "src-teams"];
 
+const PRIORITE_LABELS = { high: "Haute", medium: "Moyenne", low: "Faible/Moyenne" };
+
+let casUsageData = [
+    { label: "Recherche de bonnes pratiques", priorite: "high" },
+    { label: "Publication d'expérience", priorite: "high" },
+    { label: "IA conversationnelle", priorite: "medium" },
+    { label: "Dashboard", priorite: "medium" },
+    { label: "Recommandations IA", priorite: "low" }
+];
+
+let iaOuNonData = [
+    { label: "Déposer une bonne pratique", ia: false },
+    { label: "Recherche documentaire", ia: false },
+    { label: "Recherche intelligente", ia: true },
+    { label: "Synthèse automatique", ia: true },
+    { label: "Recommandation", ia: true }
+];
+
+function renderCasUsage(){
+    let body = document.getElementById("casUsageBody");
+    if(!body) return;
+
+    body.innerHTML = casUsageData.map((ligne, i) => `
+        <tr>
+            <td><input type="text" value="${ligne.label.replace(/"/g,"&quot;")}" oninput="modifierCasUsage(${i},'label',this.value)"></td>
+            <td>
+                <select class="tag priority-${ligne.priorite}" onchange="modifierCasUsage(${i},'priorite',this.value)">
+                    <option value="high" ${ligne.priorite==="high"?"selected":""}>Haute</option>
+                    <option value="medium" ${ligne.priorite==="medium"?"selected":""}>Moyenne</option>
+                    <option value="low" ${ligne.priorite==="low"?"selected":""}>Faible/Moyenne</option>
+                </select>
+            </td>
+            <td><button class="row-delete" onclick="supprimerCasUsage(${i})" title="Supprimer la ligne">✕</button></td>
+        </tr>
+    `).join("");
+}
+
+function modifierCasUsage(i, champ, valeur){
+    casUsageData[i][champ] = valeur;
+    if(champ === "priorite") renderCasUsage();
+    sauvegarder();
+}
+
+function ajouterCasUsage(){
+    casUsageData.push({ label: "", priorite: "medium" });
+    renderCasUsage();
+    sauvegarder();
+}
+
+function supprimerCasUsage(i){
+    casUsageData.splice(i, 1);
+    renderCasUsage();
+    sauvegarder();
+}
+
+function renderIaOuNon(){
+    let body = document.getElementById("iaOuNonBody");
+    if(!body) return;
+
+    body.innerHTML = iaOuNonData.map((ligne, i) => `
+        <tr>
+            <td><input type="text" value="${ligne.label.replace(/"/g,"&quot;")}" oninput="modifierIaOuNon(${i},'label',this.value)"></td>
+            <td>
+                <select onchange="modifierIaOuNon(${i},'ia',this.value === 'true')">
+                    <option value="false" ${!ligne.ia?"selected":""}>💻 Non</option>
+                    <option value="true" ${ligne.ia?"selected":""}>🤖 Oui</option>
+                </select>
+            </td>
+            <td><button class="row-delete" onclick="supprimerIaOuNon(${i})" title="Supprimer la ligne">✕</button></td>
+        </tr>
+    `).join("");
+}
+
+function modifierIaOuNon(i, champ, valeur){
+    iaOuNonData[i][champ] = valeur;
+    sauvegarder();
+}
+
+function ajouterIaOuNon(){
+    iaOuNonData.push({ label: "", ia: false });
+    renderIaOuNon();
+    sauvegarder();
+}
+
+function supprimerIaOuNon(i){
+    iaOuNonData.splice(i, 1);
+    renderIaOuNon();
+    sauvegarder();
+}
+
 function collecterDonnees(){
     let data = {};
 
@@ -21,6 +111,9 @@ function collecterDonnees(){
         .map(id=>document.getElementById(id))
         .filter(el=>el && el.checked)
         .map(el=>el.value);
+
+    data.casUsage = casUsageData;
+    data.iaOuNon = iaOuNonData;
 
     return data;
 }
@@ -37,7 +130,11 @@ function sauvegarder(){
 
 function restaurer(){
     let raw = localStorage.getItem(STORAGE_KEY);
-    if(!raw) return;
+    if(!raw){
+        renderCasUsage();
+        renderIaOuNon();
+        return;
+    }
 
     let data = JSON.parse(raw);
 
@@ -52,6 +149,12 @@ function restaurer(){
             if(el && el.value === valeur) el.checked = true;
         });
     });
+
+    if(Array.isArray(data.casUsage) && data.casUsage.length) casUsageData = data.casUsage;
+    if(Array.isArray(data.iaOuNon) && data.iaOuNon.length) iaOuNonData = data.iaOuNon;
+
+    renderCasUsage();
+    renderIaOuNon();
 }
 
 function attacherAutosave(){
@@ -135,11 +238,7 @@ Cas d'usage identifiés :
 **Livrable — Priorisation des cas d'usage :**
 | Cas d'usage | Priorité |
 |---|---|
-| Recherche de bonnes pratiques | Haute |
-| Publication d'expérience | Haute |
-| IA conversationnelle | Moyenne |
-| Dashboard | Moyenne |
-| Recommandations IA | Faible/Moyenne |
+${d.casUsage.map(l => `| ${l.label || vide} | ${PRIORITE_LABELS[l.priorite]} |`).join("\n")}
 
 ## 4. Explorer la valeur apportée par l'IA (25 min)
 Question centrale : si on enlève l'IA, que reste-t-il ? (distinguer plateforme collaborative / moteur de recherche / fonctionnalités IA)
@@ -156,11 +255,7 @@ Cas IA à challenger :
 **Livrable — IA ou non ? :**
 | Fonction | IA ou non ? |
 |---|---|
-| Déposer une bonne pratique | Non |
-| Recherche documentaire | Non |
-| Recherche intelligente | Oui |
-| Synthèse automatique | Oui |
-| Recommandation | Oui |
+${d.iaOuNon.map(l => `| ${l.label || vide} | ${l.ia ? "Oui" : "Non"} |`).join("\n")}
 
 ## 5. Construire la feuille de route (20 min)
 - Étape 1 — POC : collecte de contenus, moteur de recherche, premiers usages
