@@ -97,6 +97,40 @@ header p{
     white-space:nowrap;
 }
 
+.guide-btn{
+    background:#EFF6FF;
+    color:#1D4ED8;
+    border:1px solid #BFDBFE;
+    padding:4px 12px;
+    border-radius:12px;
+    font-size:0.8rem;
+    margin-top:0;
+    margin-left:auto;
+}
+
+.guide-btn:hover{
+    background:#DBEAFE;
+    opacity:1;
+}
+
+.guide-panel{
+    background:#F8FAFF;
+    border:1px solid #DBEAFE;
+    border-left:4px solid #1D4ED8;
+    border-radius:8px;
+    padding:15px 20px;
+    margin-bottom:15px;
+}
+
+.guide-panel p{
+    margin-bottom:8px;
+    line-height:1.4;
+}
+
+.guide-panel .questions{
+    margin-bottom:8px;
+}
+
 .objectif{
     font-style:italic;
     color:#555;

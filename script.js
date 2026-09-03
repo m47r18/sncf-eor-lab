@@ -62,6 +62,12 @@ function attacherAutosave(){
     });
 }
 
+function toggleGuide(id){
+    let panel = document.getElementById(id);
+    if(!panel) return;
+    panel.style.display = (panel.style.display === "none") ? "block" : "none";
+}
+
 function genererVision(){
 
     let utilisateurs=document.getElementById("utilisateurs").value || "...";

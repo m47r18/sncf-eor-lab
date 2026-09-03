@@ -26,7 +26,21 @@
         <div class="card-header">
             <h2>1. Introduction et objectifs</h2>
             <span class="timing">10 min</span>
+            <button class="guide-btn" onclick="toggleGuide('guide-1')">🧭 Guide animateur</button>
         </div>
+
+        <div id="guide-1" class="guide-panel" style="display:none;">
+            <p><strong>Comment réfléchir :</strong> partez de la douleur métier actuelle, pas des fonctionnalités. Le but est de faire dire aux participants ce qui ne marche pas aujourd'hui, avant de parler solution.</p>
+            <p><strong>Questions à creuser :</strong></p>
+            <ul class="questions">
+                <li>Qui souffre concrètement de l'absence de ce produit ?</li>
+                <li>Qu'est-ce qui prouve que le problème existe (exemples vécus) ?</li>
+                <li>Que se passe-t-il si on ne fait rien ?</li>
+            </ul>
+            <p><strong>Outils / techniques :</strong> tour de table rapide (1 min/personne), écriture individuelle silencieuse sur post-it puis partage à voix haute pour éviter l'effet de groupe.</p>
+            <p><strong>Piège à éviter :</strong> ne pas laisser la discussion glisser vers "quel outil / quelle techno" — recadrer sur le problème.</p>
+        </div>
+
         <p class="objectif">Objectif : aligner tout le monde sur ce que Nathalie cherche à obtenir.</p>
 
         <ul class="questions">
@@ -62,7 +76,21 @@
         <div class="card-header">
             <h2>2. Comprendre l'existant</h2>
             <span class="timing">20 min</span>
+            <button class="guide-btn" onclick="toggleGuide('guide-2')">🧭 Guide animateur</button>
         </div>
+
+        <div id="guide-2" class="guide-panel" style="display:none;">
+            <p><strong>Comment réfléchir :</strong> faites l'inventaire factuel avant de juger. L'objectif est de cartographier l'existant, pas encore de le critiquer ou de le réinventer.</p>
+            <p><strong>Questions à creuser :</strong></p>
+            <ul class="questions">
+                <li>Qui alimente chaque source aujourd'hui, et à quelle fréquence ?</li>
+                <li>Le contenu est-il fiable / à jour / trouvé facilement ?</li>
+                <li>Combien de temps perd-on aujourd'hui à chercher une bonne pratique ?</li>
+            </ul>
+            <p><strong>Outils / techniques :</strong> cartographie sur tableau blanc (colonnes Sources / Communauté / Usages), audit flash de 3 à 5 exemples concrets de bonnes pratiques déjà partagées.</p>
+            <p><strong>Piège à éviter :</strong> passer trop de temps sur un seul outil existant (ex. SharePoint) au détriment de la vue d'ensemble.</p>
+        </div>
+
         <p class="objectif">Ce que l'on cherche à savoir : quelles informations existent déjà ?</p>
 
         <label><strong>Sources</strong> — où sont stockées les bonnes pratiques aujourd'hui ?</label>
@@ -101,6 +129,19 @@
         <div class="card-header">
             <h2>3. Définir le produit cible</h2>
             <span class="timing">35 min</span>
+            <button class="guide-btn" onclick="toggleGuide('guide-3')">🧭 Guide animateur</button>
+        </div>
+
+        <div id="guide-3" class="guide-panel" style="display:none;">
+            <p><strong>Comment réfléchir :</strong> mettez-vous à la place de l'utilisateur final (agent, manager, expert EOR) et déroulez sa journée type — le "day in the life" — plutôt que de lister des fonctionnalités abstraites.</p>
+            <p><strong>Questions à creuser :</strong></p>
+            <ul class="questions">
+                <li>Qui est l'utilisateur principal du premier usage ?</li>
+                <li>Quel est le moment où il a le plus besoin d'aide ?</li>
+                <li>Que se passe-t-il s'il ne trouve pas l'info en 30 secondes ?</li>
+            </ul>
+            <p><strong>Outils / techniques :</strong> tri des cas d'usage par post-it, vote à points (dot voting, 3 gommettes/personne) pour prioriser, matrice impact/effort en 2x2.</p>
+            <p><strong>Piège à éviter :</strong> vouloir tout prioriser "haute" — forcer un choix en limitant à 2-3 cas d'usage haute priorité.</p>
         </div>
 
         <p class="objectif">Exercice : si le produit était disponible demain matin, que ferait l'utilisateur en premier ?</p>
@@ -178,6 +219,19 @@
         <div class="card-header">
             <h2>4. Explorer la valeur apportée par l'IA</h2>
             <span class="timing">25 min</span>
+            <button class="guide-btn" onclick="toggleGuide('guide-4')">🧭 Guide animateur</button>
+        </div>
+
+        <div id="guide-4" class="guide-panel" style="display:none;">
+            <p><strong>Comment réfléchir :</strong> pour chaque fonctionnalité envisagée, imaginez la version 100% manuelle ("test sans IA"). Si elle reste utile et faisable humainement, ce n'est pas de l'IA. Si elle demande du jugement, de la synthèse ou de la similarité sémantique à grande échelle, l'IA apporte une vraie valeur.</p>
+            <p><strong>Questions à creuser :</strong></p>
+            <ul class="questions">
+                <li>Cette tâche prendrait-elle des heures à un humain si elle était faite manuellement ?</li>
+                <li>A-t-on besoin de comprendre le sens du texte, ou une simple recherche par mot-clé suffit-elle ?</li>
+                <li>Le risque d'erreur de l'IA est-il acceptable sur ce cas d'usage ?</li>
+            </ul>
+            <p><strong>Outils / techniques :</strong> remplissez le tableau "IA ou non" fonctionnalité par fonctionnalité, testez mentalement un "Wizard of Oz" (un humain simule l'IA) pour valider l'usage avant de coder.</p>
+            <p><strong>Piège à éviter :</strong> ajouter de l'IA "parce que c'est à la mode" sur des fonctions déjà bien couvertes par de la recherche classique.</p>
         </div>
 
         <p class="objectif">Question centrale : si on enlève l'IA, que reste-t-il ?</p>
@@ -229,6 +283,19 @@
         <div class="card-header">
             <h2>5. Construire la feuille de route</h2>
             <span class="timing">20 min</span>
+            <button class="guide-btn" onclick="toggleGuide('guide-5')">🧭 Guide animateur</button>
+        </div>
+
+        <div id="guide-5" class="guide-panel" style="display:none;">
+            <p><strong>Comment réfléchir :</strong> raisonnez en incréments de valeur (Now / Next / Later) plutôt qu'en liste de fonctionnalités figée. Chaque étape doit pouvoir être testée avec de vrais utilisateurs avant de passer à la suivante.</p>
+            <p><strong>Questions à creuser :</strong></p>
+            <ul class="questions">
+                <li>Quel est le plus petit incrément qui apporte déjà de la valeur mesurable ?</li>
+                <li>Quelles dépendances techniques ou organisationnelles bloquent chaque étape ?</li>
+                <li>Qui pilote et qui valide le passage d'une étape à l'autre ?</li>
+            </ul>
+            <p><strong>Outils / techniques :</strong> découpage façon MoSCoW (Must/Should/Could/Won't) sur chaque phase, story mapping en 3 horizons temporels sur tableau blanc.</p>
+            <p><strong>Piège à éviter :</strong> vouloir livrer l'IA (Phase 3) dès le POC — sécurisez d'abord l'usage et la donnée.</p>
         </div>
 
         <div class="grid-3">
@@ -267,6 +334,19 @@
         <div class="card-header">
             <h2>6. Conclusion</h2>
             <span class="timing">10 min</span>
+            <button class="guide-btn" onclick="toggleGuide('guide-6')">🧭 Guide animateur</button>
+        </div>
+
+        <div id="guide-6" class="guide-panel" style="display:none;">
+            <p><strong>Comment réfléchir :</strong> vérifiez collectivement, point par point, que chaque livrable de la checklist est réellement rempli — pas juste "discuté". Terminez par la projection dans le futur pour valider l'alignement final.</p>
+            <p><strong>Questions à creuser :</strong></p>
+            <ul class="questions">
+                <li>Qu'est-ce qui pourrait faire échouer ce projet dans les 6 prochains mois ?</li>
+                <li>Qui est le porteur / sponsor identifié pour la suite ?</li>
+                <li>Quelle est la toute prochaine action, et qui la fait, avant quelle date ?</li>
+            </ul>
+            <p><strong>Outils / techniques :</strong> relecture à voix haute de la checklist, tour de table des engagements individuels ("je m'engage à... d'ici...").</p>
+            <p><strong>Piège à éviter :</strong> clore l'atelier sans avoir désigné explicitement qui fait quoi ensuite.</p>
         </div>
 
         <p class="objectif">Ce qu'il faut avoir obtenu :</p>
