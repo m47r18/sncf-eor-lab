@@ -13,6 +13,10 @@
     <h1>🚀 Atelier de cadrage — Plateforme EOR</h1>
     <p>Partage des bonnes pratiques et valorisation des marqueurs d'Excellence</p>
     <span class="badge-duree">⏱ Durée totale : 2h</span>
+    <div class="header-actions">
+        <button id="exportBtn" onclick="exporterMarkdown()">⬇️ Exporter en Markdown</button>
+        <span id="saveStatus" class="save-status"></span>
+    </div>
 </header>
 
 <div class="container">
@@ -63,21 +67,21 @@
 
         <label><strong>Sources</strong> — où sont stockées les bonnes pratiques aujourd'hui ?</label>
         <div class="checkbox-list">
-            <label><input type="checkbox"> Fichiers Excel</label>
-            <label><input type="checkbox"> SharePoint</label>
-            <label><input type="checkbox"> PowerPoint</label>
-            <label><input type="checkbox"> Emails</label>
-            <label><input type="checkbox"> Teams</label>
+            <label><input type="checkbox" id="src-excel" value="Fichiers Excel"> Fichiers Excel</label>
+            <label><input type="checkbox" id="src-sharepoint" value="SharePoint"> SharePoint</label>
+            <label><input type="checkbox" id="src-ppt" value="PowerPoint"> PowerPoint</label>
+            <label><input type="checkbox" id="src-emails" value="Emails"> Emails</label>
+            <label><input type="checkbox" id="src-teams" value="Teams"> Teams</label>
         </div>
 
         <div class="grid-2" style="margin-top:20px;">
             <div>
                 <label><strong>Données</strong> — marqueurs EOR, indicateurs suivis, volume de données existant</label>
-                <textarea placeholder="Quels sont les marqueurs EOR ? Quels indicateurs sont suivis ? Quel volume de données existe déjà ?"></textarea>
+                <textarea id="donnees-existantes" placeholder="Quels sont les marqueurs EOR ? Quels indicateurs sont suivis ? Quel volume de données existe déjà ?"></textarea>
             </div>
             <div>
                 <label><strong>Communauté</strong> — qui produit, consulte, valide le contenu ?</label>
-                <textarea placeholder="Qui produit le contenu ? Qui le consulte ? Qui le valide ?"></textarea>
+                <textarea id="communaute-info" placeholder="Qui produit le contenu ? Qui le consulte ? Qui le valide ?"></textarea>
             </div>
         </div>
 
@@ -100,7 +104,7 @@
         </div>
 
         <p class="objectif">Exercice : si le produit était disponible demain matin, que ferait l'utilisateur en premier ?</p>
-        <textarea placeholder="Faire émerger les cas d'usage..."></textarea>
+        <textarea id="usage-premier" placeholder="Faire émerger les cas d'usage..."></textarea>
 
         <div class="grid-4" style="margin-top:20px;">
             <div>
@@ -255,7 +259,7 @@
         </div>
 
         <span class="livrable-label" style="margin-top:20px;display:inline-block;">📦 Livrable : roadmap 6 à 12 mois</span>
-        <textarea placeholder="Détaillez la roadmap sur 6 à 12 mois..."></textarea>
+        <textarea id="roadmap-detail" placeholder="Détaillez la roadmap sur 6 à 12 mois..."></textarea>
     </div>
 
     <!-- 6. Conclusion -->
@@ -284,11 +288,11 @@
             <p style="font-size:0.85rem;color:#666;margin-bottom:10px;">
                 Cette question permet souvent de faire émerger la vraie vision du produit plus vite que la discussion sur les fonctionnalités.
             </p>
-            <textarea placeholder="Les agents trouvent facilement les bonnes pratiques..."></textarea>
+            <textarea id="projection-2027" placeholder="Les agents trouvent facilement les bonnes pratiques..."></textarea>
         </div>
 
         <span class="livrable-label" style="margin-top:20px;display:inline-block;">📦 Formulation synthétique du projet</span>
-        <textarea placeholder="À ce stade, le produit peut être résumé ainsi..."></textarea>
+        <textarea id="synthese-projet" placeholder="À ce stade, le produit peut être résumé ainsi..."></textarea>
     </div>
 
 </div>

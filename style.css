@@ -43,6 +43,24 @@ header p{
     font-size:0.85rem;
 }
 
+.header-actions{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-top:20px;
+}
+
+.header-actions button{
+    background:white;
+    color:var(--sncf);
+    margin-top:0;
+}
+
+.save-status{
+    font-size:0.8rem;
+    opacity:0.85;
+}
+
 .container{
     max-width:1400px;
     margin:auto;
