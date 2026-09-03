@@ -10,12 +10,19 @@
 <body>
 
 <header>
-    <h1>🚀 Atelier de cadrage — Plateforme EOR</h1>
-    <p>Partage des bonnes pratiques et valorisation des marqueurs d'Excellence</p>
-    <span class="badge-duree">⏱ Durée totale : 2h</span>
-    <div class="header-actions">
-        <button id="exportBtn" onclick="exporterMarkdown()">⬇️ Exporter en Markdown</button>
-        <span id="saveStatus" class="save-status"></span>
+    <div class="header-inner">
+        <div class="header-brand">
+            <img src="img/LOGO_SNCF_RESEAU_DEFONCE.png" alt="" class="header-logo">
+            <div>
+                <h1>Atelier de cadrage — Plateforme EOR</h1>
+                <p>Partage des bonnes pratiques et valorisation des marqueurs d'Excellence</p>
+                <span class="badge-duree">⏱ Durée totale : 2h</span>
+            </div>
+        </div>
+        <div class="header-actions">
+            <button id="exportBtn" onclick="exporterMarkdown()">⬇️ Exporter en Markdown</button>
+            <span id="saveStatus" class="save-status"></span>
+        </div>
     </div>
 </header>
 
@@ -379,7 +386,8 @@
 </div>
 
 <footer>
-Atelier de cadrage • Plateforme EOR • Excellence Opérationnelle & Relationnelle
+    <img src="img/LOGO_SNCF_RESEAU_RVB.png" alt="" class="footer-logo">
+    <span>Atelier de cadrage • Plateforme EOR • Excellence Opérationnelle & Relationnelle</span>
 </footer>
 
 <script src="script.js" defer></script>

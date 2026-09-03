@@ -1,32 +1,124 @@
+/* ==========================================================================
+   Design tokens — SNCF Réseau (cf. design-system-reseau.md)
+   ========================================================================== */
 :root{
-    --sncf:#E2001A;
-    --dark:#1F2937;
-    --light:#F8FAFC;
-    --border:#D1D5DB;
-    --success:#10B981;
-    --warning:#F59E0B;
+    /* Marque */
+    --sncf-violet-fonce:#9024FA;
+    --sncf-bleu-acier-fonce:#264FC4;
+    --sncf-bleu-cobalt-fonce:#5068F5;
+    --sncf-vert-trefle-fonce:#008056;
+    --sncf-vert-trefle-clair:#00CB83;
+    --sncf-jaune-or-fonce:#FFB100;
+    --sncf-rouge-feu-fonce:#C80E0E;
+    --sncf-orange-mecanique-fonce:#DE511D;
+
+    /* Rôles fonctionnels */
+    --color-primary:var(--sncf-bleu-acier-fonce);
+    --color-primary-hover:#1d3d9c;
+    --color-secondary:var(--sncf-violet-fonce);
+    --color-success:var(--sncf-vert-trefle-fonce);
+    --color-success-bg:#e5f7ee;
+    --color-warning:var(--sncf-jaune-or-fonce);
+    --color-warning-bg:#fff6e0;
+    --color-warning-text:#8a5a00;
+    --color-danger:var(--sncf-rouge-feu-fonce);
+    --color-danger-bg:#fdeaea;
+    --color-info:var(--sncf-bleu-cobalt-fonce);
+    --color-info-bg:#eef1fe;
+
+    /* Statuts RAG */
+    --status-ok:var(--sncf-vert-trefle-fonce);
+    --status-attention:var(--sncf-jaune-or-fonce);
+    --status-critique:var(--sncf-rouge-feu-fonce);
+    --status-neutre:#8a8f98;
+    --status-neutre-bg:#eef0f2;
+
+    /* Neutres */
+    --color-text:#1a1a1a;
+    --color-text-muted:#5c5f66;
+    --color-border:#d9dce1;
+    --color-bg:#ffffff;
+    --color-bg-alt:#f5f6f8;
+
+    /* Typo */
+    --font-family-base:"Avenir LT Std","Avenir Next","Helvetica Neue",Arial,sans-serif;
+
+    /* Espacement & rayons */
+    --space-2:8px;
+    --space-3:12px;
+    --space-4:16px;
+    --space-5:24px;
+    --space-6:32px;
+    --radius-sm:4px;
+    --radius-md:8px;
+    --radius-lg:16px;
+
+    --container-max-width:1280px;
 }
 
 *{
     box-sizing:border-box;
     margin:0;
     padding:0;
-    font-family:'Segoe UI',sans-serif;
+    font-family:var(--font-family-base);
 }
 
 body{
-    background:#f5f6f8;
-    color:var(--dark);
+    background:var(--color-bg-alt);
+    color:var(--color-text);
 }
 
+/* ==========================================================================
+   En-tête — bandeau "sillon"
+   ========================================================================== */
 header{
-    background:linear-gradient(135deg,#E2001A,#A30014);
+    position:relative;
+    overflow:hidden;
+    background:linear-gradient(135deg,var(--color-primary),var(--color-secondary));
     color:white;
     padding:40px;
 }
 
+/* Forme du sillon en filigrane, jamais derrière du texte dense */
+header::after{
+    content:"";
+    position:absolute;
+    top:-30%;
+    right:-5%;
+    width:55%;
+    height:160%;
+    background:rgba(255,255,255,0.08);
+    clip-path:polygon(35% 0, 100% 0, 65% 100%, 0% 100%);
+    pointer-events:none;
+}
+
+.header-inner{
+    position:relative;
+    z-index:1;
+    max-width:var(--container-max-width);
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:30px;
+    flex-wrap:wrap;
+}
+
+.header-brand{
+    display:flex;
+    align-items:center;
+    gap:24px;
+}
+
+.header-logo{
+    height:60px;
+    width:auto;
+    flex-shrink:0;
+}
+
 header h1{
     font-size:2rem;
+    font-weight:800;
 }
 
 header p{
@@ -47,12 +139,11 @@ header p{
     display:flex;
     align-items:center;
     gap:15px;
-    margin-top:20px;
 }
 
 .header-actions button{
     background:white;
-    color:var(--sncf);
+    color:var(--color-primary);
     margin-top:0;
 }
 
@@ -61,6 +152,9 @@ header p{
     opacity:0.85;
 }
 
+/* ==========================================================================
+   Layout général
+   ========================================================================== */
 .container{
     max-width:1400px;
     margin:auto;
@@ -68,11 +162,12 @@ header p{
 }
 
 .card{
-    background:white;
-    border-radius:12px;
+    background:var(--color-bg);
+    border:1px solid var(--color-border);
+    border-radius:var(--radius-lg);
     padding:25px;
     margin-bottom:20px;
-    box-shadow:0 2px 8px rgba(0,0,0,0.08);
+    box-shadow:0 2px 8px rgba(0,0,0,0.06);
 }
 
 .card-header{
@@ -85,39 +180,46 @@ header p{
 }
 
 .card h2{
-    color:var(--sncf);
+    color:var(--color-primary);
+    font-size:1.5rem;
+    font-weight:800;
+}
+
+.card h3{
+    font-weight:600;
+    font-size:1.1rem;
 }
 
 .timing{
     font-size:0.85rem;
-    color:#666;
-    background:#f3f4f6;
+    color:var(--color-text-muted);
+    background:var(--color-bg-alt);
     padding:4px 10px;
     border-radius:12px;
     white-space:nowrap;
 }
 
 .guide-btn{
-    background:#EFF6FF;
-    color:#1D4ED8;
-    border:1px solid #BFDBFE;
+    background:var(--color-info-bg);
+    color:var(--color-info);
+    border:1px solid #c7d3fb;
     padding:4px 12px;
-    border-radius:12px;
+    border-radius:var(--radius-sm);
     font-size:0.8rem;
     margin-top:0;
     margin-left:auto;
 }
 
 .guide-btn:hover{
-    background:#DBEAFE;
+    background:#dde5fd;
     opacity:1;
 }
 
 .guide-panel{
-    background:#F8FAFF;
-    border:1px solid #DBEAFE;
-    border-left:4px solid #1D4ED8;
-    border-radius:8px;
+    background:var(--color-info-bg);
+    border:1px solid #c7d3fb;
+    border-left:4px solid var(--color-info);
+    border-radius:var(--radius-md);
     padding:15px 20px;
     margin-bottom:15px;
 }
@@ -133,7 +235,7 @@ header p{
 
 .objectif{
     font-style:italic;
-    color:#555;
+    color:var(--color-text-muted);
     margin-bottom:12px;
 }
 
@@ -147,22 +249,29 @@ header p{
 
 .livrable-label{
     display:inline-block;
-    background:#EFF6FF;
-    color:#1D4ED8;
+    background:var(--color-info-bg);
+    color:var(--color-info);
     font-weight:600;
     padding:4px 10px;
-    border-radius:8px;
+    border-radius:var(--radius-sm);
     font-size:0.8rem;
     margin-bottom:8px;
 }
 
 textarea,input{
     width:100%;
-    border:1px solid var(--border);
-    border-radius:8px;
+    border:1px solid var(--color-border);
+    border-radius:var(--radius-sm);
     padding:12px;
     margin-top:8px;
     font-size:0.95rem;
+    color:var(--color-text);
+    font-family:var(--font-family-base);
+}
+
+textarea:focus,input:focus,button:focus-visible{
+    outline:2px solid var(--color-info);
+    outline-offset:1px;
 }
 
 textarea{
@@ -188,24 +297,32 @@ textarea{
     gap:20px;
 }
 
+/* ==========================================================================
+   Badges de statut (RAG)
+   ========================================================================== */
 .tag{
     display:inline-block;
     padding:5px 10px;
     border-radius:15px;
     font-size:0.8rem;
-    background:#EFEFEF;
+    font-weight:600;
+    background:var(--status-neutre-bg);
+    color:var(--status-neutre);
 }
 
 .priority-high{
-    background:#DCFCE7;
+    background:var(--color-success-bg);
+    color:var(--status-ok);
 }
 
 .priority-medium{
-    background:#FEF3C7;
+    background:var(--color-warning-bg);
+    color:var(--color-warning-text);
 }
 
 .priority-low{
-    background:#FEE2E2;
+    background:var(--status-neutre-bg);
+    color:var(--status-neutre);
 }
 
 table{
@@ -214,31 +331,37 @@ table{
 }
 
 table th{
-    background:#f3f4f6;
+    background:var(--color-bg-alt);
+    font-weight:600;
 }
 
 table td,table th{
     padding:12px;
-    border:1px solid var(--border);
+    border:1px solid var(--color-border);
 }
 
 button{
-    background:var(--sncf);
+    background:var(--color-primary);
     color:white;
     border:none;
-    padding:12px 20px;
-    border-radius:8px;
+    padding:0 16px;
+    height:40px;
+    border-radius:var(--radius-sm);
     cursor:pointer;
     margin-top:10px;
+    font-weight:600;
+    font-family:var(--font-family-base);
 }
 
 button:hover{
-    opacity:0.9;
+    background:var(--color-primary-hover);
+    opacity:1;
 }
 
 .result{
-    background:#F9FAFB;
-    border-left:5px solid var(--success);
+    background:var(--color-info-bg);
+    border-left:5px solid var(--color-info);
+    border-radius:var(--radius-md);
     padding:20px;
     margin-top:15px;
 }
@@ -256,7 +379,7 @@ button:hover{
 
 .flow-arrow{
     font-size:1.5rem;
-    color:var(--sncf);
+    color:var(--color-primary);
 }
 
 .checkbox-list{
@@ -270,7 +393,7 @@ button:hover{
     display:flex;
     align-items:center;
     gap:6px;
-    background:#f3f4f6;
+    background:var(--color-bg-alt);
     padding:6px 12px;
     border-radius:20px;
     font-size:0.9rem;
@@ -283,15 +406,15 @@ button:hover{
 }
 
 .ia-quote{
-    background:#F5F3FF;
-    border-left:4px solid #7C3AED;
+    background:#f5f1fe;
+    border-left:4px solid var(--color-secondary);
     padding:12px 15px;
-    border-radius:6px;
+    border-radius:var(--radius-md);
     margin-bottom:10px;
 }
 
 .ia-quote strong{
-    color:#5B21B6;
+    color:var(--color-secondary);
 }
 
 .checklist{
@@ -303,17 +426,29 @@ button:hover{
 }
 
 .projection{
-    background:linear-gradient(135deg,#FEF2F2,#FFF7ED);
-    border:1px dashed var(--sncf);
-    border-radius:10px;
+    background:var(--color-warning-bg);
+    border-left:4px solid var(--color-warning);
+    border-radius:var(--radius-md);
     padding:20px;
     margin-top:15px;
 }
 
+/* ==========================================================================
+   Pied de page
+   ========================================================================== */
 footer{
-    text-align:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:16px;
     padding:30px;
-    color:#666;
+    color:var(--color-text-muted);
+    flex-wrap:wrap;
+}
+
+.footer-logo{
+    height:28px;
+    width:auto;
 }
 
 @media (max-width:900px){
