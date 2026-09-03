@@ -3,7 +3,7 @@ const STORAGE_KEY = "eor-atelier-data";
 const TEXT_FIELD_IDS = [
     "utilisateurs", "action", "benefices",
     "donnees-existantes", "communaute-info",
-    "usage-premier", "roadmap-detail",
+    "usage-premier", "ia-reflexion", "roadmap-detail",
     "projection-2027", "synthese-projet"
 ];
 
@@ -143,6 +143,9 @@ Cas d'usage identifiés :
 
 ## 4. Explorer la valeur apportée par l'IA (25 min)
 Question centrale : si on enlève l'IA, que reste-t-il ? (distinguer plateforme collaborative / moteur de recherche / fonctionnalités IA)
+
+**Réflexion du groupe :**
+${val(d["ia-reflexion"])}
 
 Cas IA à challenger :
 - Assistant conversationnel — "Comment améliorer le marqueur X ?"
