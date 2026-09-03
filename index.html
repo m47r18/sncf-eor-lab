@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atelier EOR - Cadrage Produit & IA</title>
+
+<style>
+:root{
+    --sncf:#E2001A;
+    --dark:#1F2937;
+    --light:#F8FAFC;
+    --border:#D1D5DB;
+    --success:#10B981;
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:#f5f6f8;
+    color:var(--dark);
+}
+
+header{
+    background:linear-gradient(135deg,#E2001A,#A30014);
+    color:white;
+    padding:40px;
+}
+
+header h1{
+    font-size:2rem;
+}
+
+header p{
+    margin-top:10px;
+    opacity:0.9;
+}
+
+.container{
+    max-width:1400px;
+    margin:auto;
+    padding:30px;
+}
+
+.card{
+    background:white;
+    border-radius:12px;
+    padding:25px;
+    margin-bottom:20px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.08);
+}
+
+.card h2{
+    color:var(--sncf);
+    margin-bottom:15px;
+}
+
+textarea,input{
+    width:100%;
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:12px;
+    margin-top:8px;
+}
+
+textarea{
+    min-height:120px;
+    resize:vertical;
+}
+
+.grid-2{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.grid-3{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:20px;
+}
+
+.tag{
+    display:inline-block;
+    padding:5px 10px;
+    border-radius:15px;
+    font-size:0.8rem;
+    background:#EFEFEF;
+}
+
+.priority-high{
+    background:#DCFCE7;
+}
+
+.priority-medium{
+    background:#FEF3C7;
+}
+
+.priority-low{
+    background:#FEE2E2;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+table th{
+    background:#f3f4f6;
+}
+
+table td,table th{
+    padding:12px;
+    border:1px solid var(--border);
+}
+
+button{
+    background:var(--sncf);
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+button:hover{
+    opacity:0.9;
+}
+
+.result{
+    background:#F9FAFB;
+    border-left:5px solid var(--success);
+    padding:20px;
+    margin-top:15px;
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    color:#666;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🚀 Atelier EOR - Cadrage Produit & IA</h1>
+    <p>Laboratoire Excellence Opérationnelle & Relationnelle</p>
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <h2>1. Vision du projet</h2>
+
+        <label>Quel problème souhaite-t-on résoudre ?</label>
+        <textarea id="probleme"></textarea>
+
+        <label>Qui sont les utilisateurs cibles ?</label>
+        <textarea id="utilisateurs"></textarea>
+
+        <label>Quels bénéfices attendus ?</label>
+        <textarea id="benefices"></textarea>
+
+        <button onclick="genererVision()">Générer la vision</button>
+
+        <div id="visionResult" class="result" style="display:none;"></div>
+    </div>
+
+    <div class="card">
+        <h2>2. Cartographie des données existantes</h2>
+
+        <div class="grid-3">
+
+            <div>
+                <h3>Documents</h3>
+                <textarea placeholder="SharePoint, PPT, Word..."></textarea>
+            </div>
+
+            <div>
+                <h3>Données</h3>
+                <textarea placeholder="Indicateurs EOR"></textarea>
+            </div>
+
+            <div>
+                <h3>Communautés</h3>
+                <textarea placeholder="Contributeurs, experts..."></textarea>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="card">
+
+        <h2>3. Cas d'usage</h2>
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Cas d'usage</th>
+                    <th>Priorité</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>Recherche de bonnes pratiques</td>
+                    <td><span class="tag priority-high">Haute</span></td>
+                </tr>
+
+                <tr>
+                    <td>Partage de retours d'expérience</td>
+                    <td><span class="tag priority-high">Haute</span></td>
+                </tr>
+
+                <tr>
+                    <td>Capitalisation des savoirs</td>
+                    <td><span class="tag priority-high">Haute</span></td>
+                </tr>
+
+                <tr>
+                    <td>Dashboard EOR</td>
+                    <td><span class="tag priority-medium">Moyenne</span></td>
+                </tr>
+
+                <tr>
+                    <td>Assistant IA conversationnel</td>
+                    <td><span class="tag priority-medium">Moyenne</span></td>
+                </tr>
+
+            </tbody>
+        </table>
+
+    </div>
+
+    <div class="card">
+
+        <h2>4. IA ou pas IA ?</h2>
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Fonctionnalité</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>Dépôt d'une bonne pratique</td>
+                    <td>💻 Fonction classique</td>
+                </tr>
+
+                <tr>
+                    <td>Moteur de recherche documentaire</td>
+                    <td>💻 Fonction classique</td>
+                </tr>
+
+                <tr>
+                    <td>Recherche sémantique</td>
+                    <td>🤖 IA</td>
+                </tr>
+
+                <tr>
+                    <td>Synthèse automatique</td>
+                    <td>🤖 IA</td>
+                </tr>
+
+                <tr>
+                    <td>Suggestions d'initiatives similaires</td>
+                    <td>🤖 IA</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <div class="card">
+
+        <h2>5. Roadmap Produit</h2>
+
+        <div class="grid-3">
+
+            <div>
+                <h3>Phase 1 - POC</h3>
+                <ul>
+                    <li>Collecte des contenus</li>
+                    <li>Recherche simple</li>
+                    <li>Tests utilisateurs</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3>Phase 2 - MVP</h3>
+                <ul>
+                    <li>Communauté pilote</li>
+                    <li>Workflow contribution</li>
+                    <li>Indicateurs d'usage</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3>Phase 3 - IA</h3>
+                <ul>
+                    <li>Assistant conversationnel</li>
+                    <li>Recherche sémantique</li>
+                    <li>Recommandations</li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <h2>🎯 Question de projection</h2>
+
+        <p style="margin-bottom:15px;">
+            Imaginez que nous soyons en septembre 2027.
+            Le laboratoire EOR est devenu une référence au Groupe.
+            Que disent les utilisateurs ?
+        </p>
+
+        <textarea placeholder="Les agents trouvent facilement les bonnes pratiques..."></textarea>
+
+    </div>
+
+</div>
+
+<footer>
+Atelier FAN • Cadrage produit • Excellence Opérationnelle & Relationnelle
+</footer>
+
+<script>
+
+function genererVision(){
+
+    let probleme=document.getElementById("probleme").value;
+    let utilisateurs=document.getElementById("utilisateurs").value;
+    let benefices=document.getElementById("benefices").value;
+
+    let texte=
+    "<strong>Vision proposée :</strong><br><br>" +
+    "Permettre à <b>" + utilisateurs +
+    "</b> de mieux partager et retrouver les bonnes pratiques afin de résoudre <b>" +
+    probleme +
+    "</b> et générer les bénéfices suivants : <b>" +
+    benefices +
+    "</b>.";
+
+    document.getElementById("visionResult").style.display="block";
+    document.getElementById("visionResult").innerHTML=texte;
+}
+
+</script>
+
+</body>
+</html>
