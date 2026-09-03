@@ -10,6 +10,12 @@
 <body>
 
 <header>
+    <div class="header-utils">
+        <button title="Importer une configuration (JSON)" onclick="declencherImport()">📥</button>
+        <button title="Exporter la configuration (JSON)" onclick="exporterConfig()">📤</button>
+        <button title="Tout effacer" onclick="toutEffacer()">🗑️</button>
+        <input type="file" id="importFile" accept="application/json" style="display:none;" onchange="importerConfig(event)">
+    </div>
     <div class="header-inner">
         <div class="header-brand">
             <img src="img/LOGO_SNCF_RESEAU_DEFONCE.png" alt="" class="header-logo">

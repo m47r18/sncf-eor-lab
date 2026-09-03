@@ -296,6 +296,73 @@ function exporterMarkdown(){
     URL.revokeObjectURL(url);
 }
 
+function exporterConfig(){
+    let json = JSON.stringify(collecterDonnees(), null, 2);
+    let blob = new Blob([json], { type: "application/json;charset=utf-8" });
+    let url = URL.createObjectURL(blob);
+
+    let a = document.createElement("a");
+    a.href = url;
+    a.download = "atelier-eor-config.json";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+}
+
+function declencherImport(){
+    document.getElementById("importFile").click();
+}
+
+function importerConfig(event){
+    let fichier = event.target.files[0];
+    if(!fichier) return;
+
+    let reader = new FileReader();
+    reader.onload = () => {
+        try{
+            let data = JSON.parse(reader.result);
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+            restaurer();
+            sauvegarder();
+        }catch(e){
+            alert("Fichier de configuration invalide.");
+        }
+    };
+    reader.readAsText(fichier);
+    event.target.value = "";
+}
+
+function toutEffacer(){
+    if(!confirm("Effacer toutes les données saisies dans cet atelier ? Cette action est irréversible.")) return;
+
+    localStorage.removeItem(STORAGE_KEY);
+
+    TEXT_FIELD_IDS.forEach(id=>{
+        let el = document.getElementById(id);
+        if(el) el.value = "";
+    });
+
+    CHECKBOX_IDS.forEach(id=>{
+        let el = document.getElementById(id);
+        if(el) el.checked = false;
+    });
+
+    casUsageData = [];
+    iaOuNonData = [];
+    renderCasUsage();
+    renderIaOuNon();
+
+    let visionResult = document.getElementById("visionResult");
+    if(visionResult){
+        visionResult.style.display = "none";
+        visionResult.innerHTML = "";
+    }
+
+    let status = document.getElementById("saveStatus");
+    if(status) status.textContent = "🗑️ Données effacées";
+}
+
 document.addEventListener("DOMContentLoaded", ()=>{
     restaurer();
     attacherAutosave();

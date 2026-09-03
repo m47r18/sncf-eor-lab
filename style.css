@@ -79,6 +79,35 @@ header{
     padding:40px;
 }
 
+.header-utils{
+    position:absolute;
+    top:12px;
+    right:16px;
+    z-index:2;
+    display:flex;
+    gap:8px;
+}
+
+.header-utils button{
+    width:32px;
+    height:32px;
+    padding:0;
+    margin-top:0;
+    border-radius:50%;
+    background:rgba(255,255,255,0.15);
+    color:white;
+    border:1px solid rgba(255,255,255,0.4);
+    font-size:0.9rem;
+    line-height:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.header-utils button:hover{
+    background:rgba(255,255,255,0.3);
+}
+
 /* Forme du sillon en filigrane, jamais derrière du texte dense */
 header::after{
     content:"";
